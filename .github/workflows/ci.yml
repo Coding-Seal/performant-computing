@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: cachix/install-nix-action@v27
+      - uses: cachix/cachix-action@v15
+        with:
+          name: devenv
+
+      - name: Install devenv
+        run: nix profile install nixpkgs#devenv
+
+      - name: Configure (generates compile_commands.json)
+        run: devenv shell -- cmake -S . -B build -G Ninja
+
+      - name: Run lint checks
+        run: devenv shell -- prek run --all-files
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: cachix/install-nix-action@v27
+      - uses: cachix/cachix-action@v15
+        with:
+          name: devenv
+
+      - name: Install devenv
+        run: nix profile install nixpkgs#devenv
+
+      - name: Configure
+        run: devenv shell -- cmake -S . -B build -G Ninja
+
+      - name: Build
+        run: devenv shell -- cmake --build build
+
+      - name: Test
+        run: devenv shell -- ctest --test-dir build --output-on-failure
