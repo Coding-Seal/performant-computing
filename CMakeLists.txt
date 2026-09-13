@@ -19,3 +19,4 @@ add_compile_options(-Wall -Wextra)
 enable_testing()
 
 add_subdirectory(lab6)
+add_subdirectory(lab7.1)
