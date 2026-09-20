@@ -8,3 +8,10 @@ devenv.local.yaml
 
 # pre-commit
 .pre-commit-config.yaml
+
+# build output
+build/
+/compile_commands.json
+
+# editor/LSP
+.cache/

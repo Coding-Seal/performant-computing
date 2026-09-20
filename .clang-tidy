@@ -1,0 +1,17 @@
+Checks: >
+  clang-diagnostic-*,
+  clang-analyzer-*,
+  bugprone-*,
+  performance-*,
+  modernize-*,
+  readability-*,
+  portability-*,
+  misc-*,
+  -modernize-use-trailing-return-type,
+  -modernize-avoid-c-arrays,
+  -modernize-loop-convert,
+  -readability-identifier-length,
+  -readability-magic-numbers,
+  -portability-avoid-pragma-once,
+  -clang-analyzer-deadcode.DeadStores
+WarningsAsErrors: ''
