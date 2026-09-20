@@ -20,3 +20,4 @@ enable_testing()
 
 add_subdirectory(lab6)
 add_subdirectory(lab7.1)
+add_subdirectory(lab7.2)
