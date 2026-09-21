@@ -8,6 +8,7 @@
     pkgs.ninja
     pkgs.gtest
     pkgs.llvmPackages.openmp
+    pkgs.openmpi
   ];
 
 
